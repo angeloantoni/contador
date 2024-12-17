@@ -7,12 +7,17 @@
     <title>Quando Clara volta?</title>
     <style>
         body {
+
+            background-image: url(https://raw.githubusercontent.com/angeloantoni/contador/refs/heads/main/Group%2041.jpg);
+            background-position: center;
+            background-size: cover;
             font-family:'Roboto';
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             background-color: #00656B;
+            
         }
         .countdown {
             text-align: center;
@@ -29,14 +34,40 @@
             padding: 1rem;
             border-radius: 10px;
         }
-  
-    </style>
+        body .countdown .emoji button{
+
+            font-size: 50px;
+            cursor: pointer;
+            background: none;
+            border: none;
+
+        }
+        .emoji{
+            display: inline-flex;
+            font-size: 20px;
+            color: white;  
+            
+        }
+        .gif img {     
+            width: auto;
+            height: 200px;
+            border-radius: 10px;
+        </style>
+        
 </head>
 <body>
     <div class="countdown">
         <h1>CLARA VOLTA EM</h1>
         <p id="timer"></p>
+        
+    <div class="emoji" id="emoji"><button>😢</button></div>
+
+
+    <div class="gif"> 
+        <img src="https://github.com/angeloantoni/contador/blob/main/gif.gif?raw=true">
     </div>
+
+
     <script>
 
         const startDate = new Date('2024-12-17T00:00:00').getTime();
@@ -46,26 +77,34 @@
             const now = new Date().getTime();
             const timeLeft = endDate - now;
 
-            // Calcular dias, horas, minutos e segundos restantes
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            // Exibir a contagem regressiva no elemento com id "timer"
             document.getElementById('timer').innerHTML = `
                 ${days} dias ${hours} horas ${minutes} minutos ${seconds} segundos
             `;
 
-            // Se a contagem regressiva terminar, exibir uma mensagem
             if (timeLeft < 0) {
                 clearInterval(interval);
-                document.getElementById('timer').innerHTML = 'Tempo esgotado!';
+                document.getElementById('timer').innerHTML = 'Clara voltou! :)';
             }
         }
 
-        // Atualizar a contagem regressiva a cada segundo
         const interval = setInterval(updateCountdown, 1000);
+
+
+
+        document.getElementById('emoji').addEventListener('click', function() { this.textContent = this.textContent === '😢' ? '😭 volta logo buá!' : '😢'; }); 
+        
+        window.onload = function() 
+        { var video = document.getElementById("myVideo"); 
+        video.autoplay = true; 
+        video.load(); 
+    };
+        
+
     </script>
 </body>
 </html>
